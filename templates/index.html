@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommender</title>
+    <style>
+        body {
+            background:linear-gradient(135deg,#001f3f,#003366);
+            color:white;
+            font-family:Arial,sans-serif;
+            margin:0;
+            padding:0;
+            text-align:center;
+        }
+
+        .container {
+            max-width:900px;
+            margin:0 auto;
+            padding:20px;
+        }
+
+        h1 {
+            margin-top:30px;
+            margin-bottom:20px;
+        }
+
+        form {
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:10px;
+            margin-bottom:30px;
+            flex-wrap:wrap;
+        }
+
+        input[type="text"] {
+            padding:10px;
+            width:250px;
+            border-radius:5px;
+            border:none;
+            font-size:16px;
+            color:black;
+        }
+
+        button {
+            padding:10px 20px;
+            border:none;
+            background-color:#007BFF;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover {
+            background-color:#0056b3;
+        }
+
+        h2 {
+            margin-top:40px;
+        }
+
+        .movie-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+            gap:20px;
+            justify-content:center;
+            margin-top:20px;
+        }
+
+        .movie-card {
+            background-color:#0d1b2a;
+            padding:10px;
+            border-radius:10px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.3);
+            transition:transform 0.2s ease;
+        }
+
+        .movie-card:hover {
+            transform:scale(1.05);
+            background-color:#112b44;
+        }
+
+        .movie-card img {
+            width:100%;
+            border-radius:8px;
+        }
+
+        .movie-card p {
+            margin:8px 0 4px;
+        }
+
+        .rating {
+            font-size:0.9rem;
+            color:#ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Movie Recommending System</h1>
+
+    <form method="POST">
+        <input type="text" name="movie" id="movie" required placeholder="Enter movie title...">
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+    <h2>Recommendations for "{{ movie }}"</h2>
+    <div class="movie-grid">
+        {% for title, poster, rating in recommendations %}
+        <div class="movie-card">
+            <img src="{{ poster }}" alt="{{ title }}">
+            <p><strong>{{ title }}</strong></p>
+            <p class="rating">⭐ {{ rating }} / 10</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% elif movie %}
+    <p>No recommendations found for "{{ movie }}".</p>
+    {% endif %}
+</div>
+</body>
+</html>

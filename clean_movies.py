@@ -59,21 +59,5 @@ def recommend(title:str)->list[str]:
         similar_movies.append((df.iloc[i]['title'],poster_url,rating))
 
     return similar_movies
-#print(recommend("   batman   "))
 
 
-
-
-#print(similarity_matrix.shape)
-#print(similarity_matrix[0])  # Show how similar movie 0 is to every other movie
-
-
-
-#print("number of rows and cols")
-#print(df.shape)
-
-#print("\n column names")
-#print(df.columns.tolist())
-
-#print("\n first 5 movies")
-#print(df.head())

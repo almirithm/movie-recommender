@@ -13,7 +13,7 @@ df=df[mask]
 
 tfidf=TfidfVectorizer(stop_words='english')
 tfidf_matrix=tfidf.fit_transform(df['overview'])
-#print(tfidf_matrix.shape)
+
 
 similarity_matrix=cosine_similarity(tfidf_matrix)
 

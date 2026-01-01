@@ -1,6 +1,6 @@
-import requests #takes care of https,the GET request using the API ,handles all the messy parts and parameters of sending a request
+import requests
 import pandas as pd
-import time  #this is for respecting tmdb rate limit,it delays our get request so that it adhers to their policy
+import time  
 
 API_KEY = "5bb20e1096f41c8ba597f1c3e91c5952"
 BASE_URL="https://api.themoviedb.org/3"
